@@ -6,9 +6,9 @@ static mut MESSAGE_LOG: Vec<String> = vec![];
 
 #[no_mangle]
 extern "C" fn handle() {
-    let payload = String::from_utf8(msg::load_bytes()).expect("Invalid payload");
+    let new_msg = String::from_utf8(msg::load_bytes()).expect("Invalid message");
 
-    if payload == "PING" {
+    if new_msg == "PING" {
         msg::reply_bytes("PONG", 0).expect("Unable to reply");
     }
 
