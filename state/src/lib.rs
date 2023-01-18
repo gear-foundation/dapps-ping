@@ -9,18 +9,21 @@ pub trait Metawasm {
     type State = <DemoPingMetadata as Metadata>::State;
 
     fn get_first_message(state: Self::State) -> String {
-        state.first().clone().expect("Message log is empty!")
+        state.first().expect("Message log is empty!").to_string()
     }
 
     fn get_last_message(state: Self::State) -> String {
-        state.last().clone().expect("Message log is empty!")
+        state.last().expect("Message log is empty!").to_string()
     }
 
-    fn get_messages_len(state: Self::State) -> usize {
-        state.len()
+    fn get_messages_len(state: Self::State) -> u64 {
+        state.len() as u64
     }
 
-    fn get_message(index: usize, state: Self::State) -> String {
-        state.get(index).clone().expect("Invalid index!")
+    fn get_message(index: u64, state: Self::State) -> String {
+        state
+            .get(index as usize)
+            .expect("Invalid index!")
+            .to_string()
     }
 }
