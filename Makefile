@@ -18,7 +18,7 @@ init:
 
 lint:
 	@echo ⚙️ Running the linter...
-	@cargo +nightly clippy --workspace -- -D warnings
+	@cargo +nightly clippy --workspace --all-targets -- -D warnings
 
 pre-commit: fmt lint full-test
 
