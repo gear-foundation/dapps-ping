@@ -6,8 +6,6 @@ static mut MESSAGE_LOG: Vec<String> = vec![];
 extern "C" fn handle() {
     let new_msg: String = msg::load().expect("Unable to create string");
 
-    debug!(new_msg);
-
     if new_msg == "PING" {
         msg::reply_bytes("PONG", 0).expect("Unable to reply");
     }
