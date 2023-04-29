@@ -37,6 +37,7 @@ extern "C" fn metahash() {
 mod tests {
     extern crate std;
 
+    use gstd::{Encode, String};
     use gtest::{Log, Program, System};
 
     #[test]
@@ -49,7 +50,7 @@ mod tests {
         let res = program.send_bytes(42, "INIT");
         assert!(res.log().is_empty());
 
-        let res = program.send_bytes(42, "PING");
+        let res = program.send_bytes(42, String::from("PING").encode());
         let log = Log::builder().source(1).dest(42).payload_bytes("PONG");
         assert!(res.contains(&log));
     }
