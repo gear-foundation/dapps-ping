@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["demo_ping","demo_ping_io","demo_ping_state"];
