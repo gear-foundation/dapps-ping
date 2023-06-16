@@ -7,7 +7,7 @@ extern "C" fn handle() {
     let new_msg: String = msg::load().expect("Unable to create string");
 
     if new_msg == "PING" {
-        msg::reply_bytes("PONG", 0).expect("Unable to reply");
+        msg::reply("PONG", 0).expect("Unable to reply");
     }
 
     unsafe {
@@ -51,7 +51,7 @@ mod tests {
         assert!(res.log().is_empty());
 
         let res = program.send_bytes(42, String::from("PING").encode());
-        let log = Log::builder().source(1).dest(42).payload_bytes("PONG");
+        let log = Log::builder().source(1).dest(42).payload("PONG");
         assert!(res.contains(&log));
     }
 }
