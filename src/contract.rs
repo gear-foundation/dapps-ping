@@ -16,7 +16,7 @@ extern "C" fn handle() {
         debug!("{:?} total message(s) stored: ", MESSAGE_LOG.len());
 
         for log in &MESSAGE_LOG {
-            debug!("{:?}", log);
+            debug!("{log:?}");
         }
     }
 }
